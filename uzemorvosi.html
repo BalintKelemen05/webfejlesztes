@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name = "author" content = "Kelemen Bálint">
+  <meta name = "description" content="Egy fiktív budapesti rendelő üzemorvosi vizsgálatra vonatkozó oldala">
+  <title>Üzemorvosi vizsgálat</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png">
+
+  <style>
+    label.error{
+      color: red;
+    }
+  </style>
+  
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="main_title">
+        <p>Üzemorvosi vizsgálat</p>
+        <a href="#"><img src="images/rendelo ikon.png" alt="Rendelőnk logója"></a>
+
+      </div>
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">Kezdőlap</a></li>
+          <li><a class ="current" href="#">Üzemorvosi vizsgálat</a></li>
+          <li><a href="galeria.html">Galéria</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="med_service">
+    <p>Cégünk üzemorvosi vizsgálatok megszervezését is vállalja, melyet igénybe vehet budapesti telephelyünkön,
+      illetve kiszállást is tudunk biztosítani. Konzultáció után ügyfeleink számára egyéni árajánlatot készítünk,
+      de a következő tényezőket figyelembe véve körül-belüli árajánlatot kaphat.
+      Ha felkeltettük az érdeklődését, kérjük, töltse ki az alábbi űrlapot:
+    </p>
+    <div class = "form">
+      <div class="form-container">
+        <form action="https://rf.uni-corvinus.hu/webfejlesztes/receive.php" method="post" id = "myform" novalidate>
+
+            <label for="business-type">Vállalkozás típusa:</label>
+            <select id="business-type" name="business-type">
+                <option value="small">Kisvállalkozás</option>
+                <option value="mid-size">Középvállalkozás</option>
+                <option value="big">Nagyvállalat</option>
+            </select>
+            
+
+            <label for="service-type">Szolgáltatás helye:</label>
+            <select id="service-type" name="service-type">
+                <option value="locally">Telephelyükön</option>
+                <option value="elsewhere">Saját helyszínen</option>
+            </select>
+
+            <label for="participants">Hány főről van szó?</label>
+            <input type="number" id="participants" name="participants">
+
+            <label for="urgency">Szolgáltatás sürgőssége:</label>
+            <select id="urgency" name="urgency">
+                <option value="week">Egy héten belül</option>
+                <option value="month">Egy hónapon belül</option>
+                <option value="not">Nem sürgős</option>
+            </select>
+
+            <label for="invoice_demand">Tart igényt ÁFÁs számlára?</label>
+            <ul class = "radio_list">
+            <li><label>Igen<input type="radio" name = "invoice_demand" id = true></label></li>
+            <li><label>Nem<input type="radio" name = "invoice_demand" id = false></label></li>
+            </ul>
+
+            <label for="pay_method">Hogyan kíván fizetni?</label>
+            <ul class = "radio_list">
+            <li><label>Készpénzzel<input type="radio" name = "paying_method" id = "cash"></label></li>
+            <li><label>Kártyával<input type="radio" name = "paying_method" id = "card"></label><li>
+            <li><label>Banki átutalással<input type="radio" name = "paying_method" id = "transfer"></label></li>
+            </ul>
+
+            <label for="notes">Egyéb megjegyzések:</label>
+            <textarea id="notes" name="notes" rows="4" placeholder="Ide írhatja a további részleteket..."></textarea>
+            
+            <input type="button" class = "button" value = "Kérem az árajánlatot!" id = "calculate">
+
+
+             <label for="offer">Az elkészült árajánlat:</label>
+            <textarea id="offer" name="offer" rows="4" placeholder="Itt fog megjelenni az elkészült árajánlat..."></textarea>
+        </form>
+        <div class = "form_undertext">
+          <p>Kérjük vegye figyelembe, hogy az automatikusan generált árajánlat csupán közelítő értéket ad. Ha felkeltettük érdeklődését, kérjük keressen
+             fel minket személyes konzultáció céljából.
+          </p>
+        </div>
+    </div>
+  </section>
+  <footer class = "footer">
+    Az oldal nem reprezentál valós vállalatot, csupán tanulási célokat szolgál <br>
+    Kelemen Bálint 2024 Corvinus
+  </footer>
+  <script src="scripts/jquery-3.7.1.js"></script>
+  <script src="scripts/1.19.5"></script>
+  <script>
+$(document).ready(function () {
+    $("form").validate({
+        rules: {
+            "business-type": {
+                required: true
+            },
+            "service-type": {
+                required: true
+            },
+            participants: {
+                required: true,
+                number: true,
+                min: 1,
+                max: 1000
+            },
+            urgency: {
+                required: true
+            },
+            paying_method: {
+                required: true
+            },
+            notes: {
+                maxlength: 500
+            }
+        },
+        messages: {
+            "business-type": {
+                required: "Kérjük, válassza ki a vállalkozás típusát!"
+            },
+            "service-type": {
+                required: "Kérjük, válassza ki a szolgáltatás helyét!"
+            },
+            participants: {
+                required: "Kérjük, adja meg a résztvevők számát!",
+                number: "A résztvevők száma csak szám lehet!",
+                min: "Legalább 1 főt meg kell adnia!",
+                max: "A résztvevők száma nem lehet több 1000-nél!"
+            },
+            urgency: {
+                required: "Kérjük, válassza ki a szolgáltatás sürgősségét!"
+            },
+            notes: {
+                maxlength: "A megjegyzés maximum 500 karakter lehet!"
+            }
+        },
+    });
+});
+    </script>
+  <script src = "scripts/script.js"></script>
+</body>
+</html>

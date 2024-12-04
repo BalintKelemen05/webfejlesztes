@@ -1,0 +1,260 @@
+@import url("https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap");
+/* Teljes dokumentumra vonatkozó beállítások */
+html{
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  color: #333;
+  background-color: #F8F8F8;
+  line-height: 1.6;
+  font-family: "Parkinsans", serif;
+}
+/* Conatiner és fejléc beállítások - minden lapon ugyan az */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0;
+  align-items: center;
+}
+
+.header {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #CDEAC0;
+  flex-direction: column;
+  text-align: center;
+}
+
+.header img{
+  width: 50%;
+  height: auto;
+  border-radius: 10%;
+}
+
+.header .main_title {
+  font-size: 2.4em;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.nav ul li a:hover {
+  color:#fff
+}
+.nav ul li a.current{
+  color:#fff;
+  font-weight: bold;
+}
+
+
+
+.header .nav ul {
+  list-style: none;
+  padding-top: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.header .nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: larger;
+}
+/* Kizárólag a kezdőlapra alkalmazott beállítások */
+.hero {
+  display:flex;
+  color: #333;
+  text-align: center;
+  align-items: center;
+  padding: 60px 20px;
+  background-image: url("images/budapest_hatter.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.hero-content h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.services {
+  text-align: center;
+  padding: 40px 20px;
+  gap: 20px;
+  align-items: center;
+}
+
+.services .service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.service-item img {
+  width: 50%;
+  height: auto;
+  border-radius: 10%;
+}
+
+.service-item p {
+  margin: 0;
+}
+
+.doctors {
+  background-color: #F8F8F8;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.doctor-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space;
+  gap: 30px;
+}
+
+.doctor-item img {
+  width: 50%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.doctor-item p {
+  margin: 5px 0;
+}
+
+.contact {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.footer{
+  width: 100%;
+  height: 2.5rem;
+  text-align: center;
+  bottom:0;
+  padding: 10px;
+  background-color: #333;
+  color:#fff;
+}
+/* Az üzemorvosi oldalra vonatkozó beállítások */
+.med_service {
+  color: #333;
+  text-align: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.radio_list{
+  display:flex;
+  list-style-type: none;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+}
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+input, select, textarea, .button{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid#CDEAC0;
+  border-radius: 5px;
+}
+.button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #218838;
+}
+/* Tablet beállítások */
+@media (min-width: 768px) {
+  .header {
+    padding: 20px 0;
+  }
+.header .main_title{
+  display:flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+}
+  .header img{
+    height: 150px;
+    width: 150px;
+  }
+.hero{
+  background-image: url("images/budapest_hatter.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height:20%;
+  justify-content: center;
+}
+  .header .nav ul {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .services .service-list {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .doctor-list {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+/* Számítógép beállítások */
+@media (min-width: 1024px) 
+{
+  .header .main_title{
+    text-align: center;
+  }
+  .hero {
+    padding: 100px 20px;
+    background-image: url("images/budapest_hatter.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 20%;
+    justify-content: center;
+
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+
+  .container {
+    max-width: 1000px;
+  }
+}
